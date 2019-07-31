@@ -13,11 +13,7 @@ public class ArbolBinario<E> {
     private NodeBinario<E> root;
     
     public ArbolBinario(){
-        this.root=null;
-    }
-    
-    private NodeBinario<E> getRoot(){
-        return this.root;
+        this.root=new NodeBinario<>();
     }
     
     public ArbolBinario(NodeBinario<E> root){
@@ -25,7 +21,11 @@ public class ArbolBinario<E> {
     }
     
     public ArbolBinario(E data){
-        this.root=new NodeBinario(data);
+        this.root=new NodeBinario<>(data);
+    }
+    
+    private NodeBinario<E> getRoot(){
+        return this.root;
     }
     
     public boolean isEmpty(){
@@ -33,6 +33,8 @@ public class ArbolBinario<E> {
     }
     /*Lo separare de dos para abtraerme el ingreso de la raiz y tener mas limpio el codigo*/
     private NodeBinario<E> searchNode(E element){
+        if(isEmpty())
+            return null;
         return searchNodeRecursivo(element,this.root);
     }
     
@@ -77,5 +79,19 @@ public class ArbolBinario<E> {
             return false;
         }
         return false;
+    }
+    
+    public void recursiveInOrden(){
+        if(this.root==null)
+            System.exit(0);
+        recursiveInOrden(this);
+        System.out.println();
+    }
+    private void recursiveInOrden(ArbolBinario<E> node){
+        if(node!=null){
+            recursiveInOrden(node.getRoot().getLeft());
+            System.out.print(node.getRoot().getData());
+            recursiveInOrden(node.getRoot().getRight());
+        }
     }
 }

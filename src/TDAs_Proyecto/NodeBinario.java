@@ -16,9 +16,17 @@ public class NodeBinario<E> {
     private boolean isQuestion;
     private NodeBinario<E> father;
     
+    public NodeBinario(){
+        this(null,null,null);
+    }
+    
     public NodeBinario(E data){
+        this(data,null,null);
+    }
+    public NodeBinario(E data,ArbolBinario<E> left,ArbolBinario<E> right){
         this.data=data;
-        this.left=this.right=null;
+        this.left=left;
+        this.right=right;
         this.isQuestion=true;
         this.father=null;
     }
