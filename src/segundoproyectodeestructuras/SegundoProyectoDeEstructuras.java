@@ -5,8 +5,6 @@
  */
 package segundoproyectodeestructuras;
 
-import TDAs_Proyecto.ArbolBinario;
-import TDAs_Proyecto.NodeBinario;
 
 /**
  *
@@ -19,9 +17,7 @@ public class SegundoProyectoDeEstructuras {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        ArbolBinario<String> hola=new ArbolBinario<>();
-        hola.add("hola", "aqui");
-        hola.recursiveInOrden();
+        
     }
     
 }
