@@ -452,24 +452,6 @@ public class BinaryTree<T> {
     mas adelante o puede que no*/
     
     
-    /*public void setChildrenInLevel(BinaryTree<T> nodo,BinaryTree<T> arbol){
-        Stack<BinaryTree<T>> pila= new Stack();
-        int leaves=arbol.countLeavesIterative();
-        pila.add(this);
-        int count = 0;
-        while(!pila.isEmpty()&&count<leaves+count){
-            BinaryTree<T> temp=pila.pop();
-            if(temp.isLeaf()){
-                temp.setRight(nodo);
-                temp.setLeft(nodo);
-            }else{
-                pila.add(temp.getRight());
-                pila.add(temp.getRight());
-                count++;
-            }
-        }
-    }*/
-    
     public void setChildrens(BinaryTree<T> nodo) {
         LinkedList<BinaryTree<T>> lista=new LinkedList<>();
         Stack<BinaryTree<T>> stack = new Stack();
@@ -533,42 +515,4 @@ public class BinaryTree<T> {
             }
         }
     }
-    
-    /*public void limpiarVisited(){
-        limpiarVisited(this);
-    }
-    private void limpiarVisited(BinaryTree<T> node){
-        if(node!=null){
-            node.getRoot().setVisitedFa();
-            limpiarVisited(node.getLeft());
-            limpiarVisited(node.getRight());
-        }
-    }*/
-    
-    
-    /*public boolean add(T padre, T element,boolean side){
-        BinaryNode<T> nodo=new BinaryNode(element);
-        if(padre==null && isEmpty() && element !=null){
-            this.root=nodo;
-        }else if(padre!=null && element != null && !isEmpty() && searchNodo(element)==null){
-            BinaryNode<T> ref=searchNodo(padre);
-            if(ref == null){
-                return false;
-            }
-            /*if(!ref.getVisited()){
-                /*if(ref.getRight()==null && ref.getLeft()==null){
-                    ref.setLeft(new BinaryTree(nodo.getContent()));
-                    ref.setRight(new BinaryTree(nodo.getContent()));
-                    return true;
-                //}
-                if(side==false){
-                    ref.setLeft(new BinaryTree(nodo.getContent()));
-                    return true;
-                }else{
-                    ref.setRight(new BinaryTree(nodo.getContent()));
-                    return true;
-                }
-        }
-        return false;
-    }*/
 }
