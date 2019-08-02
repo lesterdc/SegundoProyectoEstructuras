@@ -390,7 +390,7 @@ public class BinaryTree<T> {
         else
             return 0;
     }
-    private int iterativecountSons(BinaryTree<T> tree){
+    public int iterativecountSons(BinaryTree<T> tree){
         Stack<BinaryTree<T>> pila=new Stack();
         pila.push(tree);
         int cont=0;
@@ -545,7 +545,51 @@ public class BinaryTree<T> {
         }
     }*/
     
-    public boolean add(T padre, T element){
+    public void add(T element,LinkedList<String> lista){
+        Stack<BinaryTree<T>> pila = new Stack();
+        pila.push(this);
+        System.out.println(element);
+        while(!pila.isEmpty()){
+            BinaryTree<T> arbol=pila.pop();
+            if(!arbol.isLeaf()){
+                String res=lista.removeFirst().trim();
+                System.out.println(arbol.getRoot().getContent()+"  "+res);
+                if(res.equals("si")){
+                    System.out.println(arbol.getLeft().getRoot().getContent()+"Izquierdo");
+                    pila.push(arbol.getLeft());
+                }else{
+                    System.out.println(arbol.getRight().getRoot().getContent()+"Dereceho");
+                    pila.push(arbol.getRight());
+                }
+            }
+            break;
+            //System.out.println(pila.pop().getLeft().getRoot().getContent()+" mi info");
+        }
+        System.out.println(lista.size());
+        System.out.println(pila.size());
+        BinaryTree<T> subarbol=pila.pop();
+        String fin=lista.removeFirst().trim();
+        String ult=lista.removeFirst().trim();
+        if(fin.equals("si")&&searchNodo(element)==null){
+            if(subarbol.getLeft().getLeft()==null && ult.equals("si")){
+                subarbol.getLeft().setLeft(new BinaryTree(element));
+            }else if(subarbol.getLeft().getRight()==null && ult.equals("no")){
+                subarbol.getLeft().setRight(new BinaryTree(element));
+            }else{
+                System.out.println("hay un error Izquierda Princiapl");
+            }
+        }else if(fin.equals("no")&&searchNodo(element)==null){
+            if(subarbol.getRight().getLeft()==null && ult.equals("si")){
+                subarbol.getRight().setLeft(new BinaryTree(element));
+            }else if(subarbol.getRight().getRight()==null && ult.equals("no")){
+                subarbol.getRight().setRight(new BinaryTree(element));
+            }else{
+                System.out.println("Hay error en Derecha Principal");
+            }
+        }
+        this.IterativeInOrden();
+    }
+    /*public boolean add(T padre, T element,boolean side){
         BinaryNode<T> nodo=new BinaryNode(element);
         if(padre==null && isEmpty() && element !=null){
             this.root=nodo;
@@ -554,24 +598,20 @@ public class BinaryTree<T> {
             if(ref == null){
                 return false;
             }
-            //if(!ref.getVisited()){
-                if(ref.getRight()==null && ref.getLeft()==null){
+            /*if(!ref.getVisited()){
+                /*if(ref.getRight()==null && ref.getLeft()==null){
                     ref.setLeft(new BinaryTree(nodo.getContent()));
                     ref.setRight(new BinaryTree(nodo.getContent()));
                     return true;
                 //}
-                /*if(ref.getLeft()==null){
+                if(side==false){
                     ref.setLeft(new BinaryTree(nodo.getContent()));
                     return true;
-                }else if(ref.getRight()==null){
+                }else{
                     ref.setRight(new BinaryTree(nodo.getContent()));
                     return true;
-                }*/
-            }
-            
-            return false;
+                }
         }
         return false;
-    }
-    
+    }*/
 }

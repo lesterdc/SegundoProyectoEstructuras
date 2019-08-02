@@ -41,6 +41,9 @@ public class SegundoProyectoDeEstructuras {
         ControlJuego control=new ControlJuego();
         BinaryTree<String> arbol = control.constructorArbol();
         arbol.IterativeInOrden();
+        System.out.println(arbol.iterativecountSons(arbol));
+        HashMap<String,LinkedList<String>> respuestas = ControlArchivosIO.lecturaArchivoRespuestas("respuestas.txt");
+        respuestas.forEach((texto,list)->System.out.println(texto+"=>"+list));
         //HashMap<Integer,String> preguntas = ControlArchivosIO.lecturaArchivo("preguntas.txt");
         //HashMap<Integer,String> respuestas = ControlArchivosIO.lecturaArchivo("respuestas.txt");
         
